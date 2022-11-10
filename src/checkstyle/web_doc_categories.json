@@ -1,0 +1,658 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Microservice Categories",
+        "version": "1.0.0",
+        "description": "Categorías - Claro Shop",
+        "contact": {
+            "name": "Angel Martínez",
+            "email": "angel.martinez@claroshop.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "/categories/v1",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/health": {
+            "summary": "Get Health Status",
+            "description": "This endpoint used to check health status and database connection",
+            "get": {
+                "tags": [
+                    "Health"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "health": {
+                                        "value": {
+                                            "time": 1614638648,
+                                            "php": "7.2.34",
+                                            "mongodb:driver": "1.9.0",
+                                            "mongodb:connect": true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Succesful response"
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "MongoDB no connected": {
+                                        "value": {
+                                            "time": 1614707302,
+                                            "php": "7.2.34",
+                                            "mongodb:driver": "1.9.0",
+                                            "mongodb:connect": false
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Database Connection Unavailable"
+                    }
+                },
+                "summary": "Get Health Status",
+                "description": "This endpoint/path provide information about database status connection"
+            }
+        },
+        "/category": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "OK": {
+                                        "value": {
+                                            "metadata": {
+                                                "is_error": false,
+                                                "http_status": 200,
+                                                "time": 1614708012,
+                                                "message": "Success"
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf2a",
+                                                    "external_id": 21825,
+                                                    "name": "Celulares y telefonía",
+                                                    "seo": "celulares-y-telefonia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21825.png",
+                                                    "order": 1,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf36",
+                                                    "external_id": 21826,
+                                                    "name": "Electrónica y Tecnología",
+                                                    "seo": "electronica-y-tecnologia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21826.png",
+                                                    "order": 2,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf5c",
+                                                    "external_id": 21827,
+                                                    "name": "Videojuegos",
+                                                    "seo": "videojuegos",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21827.png",
+                                                    "order": 3,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf6f",
+                                                    "external_id": 21828,
+                                                    "name": "Hogar y Jardín",
+                                                    "seo": "hogar-y-jardin",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21828.png",
+                                                    "order": 4,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bfa2",
+                                                    "external_id": 21829,
+                                                    "name": "Deportes y Ocio",
+                                                    "seo": "deportes-y-ocio",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21829.png",
+                                                    "order": 5,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bff8",
+                                                    "external_id": 21844,
+                                                    "name": "Animales y Mascotas",
+                                                    "seo": "animales-y-mascotas",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/animales-mascotas.png",
+                                                    "order": 6,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c056",
+                                                    "external_id": 21830,
+                                                    "name": "Ferretería y Autos",
+                                                    "seo": "ferreteria-y-autos",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/FerreteriaYautos_Herramientas.png",
+                                                    "order": 7,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c0df",
+                                                    "external_id": 21831,
+                                                    "name": "Ropa, Calzado y Accesorios",
+                                                    "seo": "ropa-calzado-y-accesorios",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21831.png",
+                                                    "order": 8,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c0f7",
+                                                    "external_id": 21832,
+                                                    "name": "Mamá y Bebé",
+                                                    "seo": "mama-y-bebe",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21832.png",
+                                                    "order": 9,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c11a",
+                                                    "external_id": 21833,
+                                                    "name": "Salud, Belleza y Cuidado personal",
+                                                    "seo": "salud-belleza-y-cuidado-personal",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21833.png",
+                                                    "order": 10,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c12c",
+                                                    "external_id": 21834,
+                                                    "name": "Joyería y Relojes",
+                                                    "seo": "joyeria-y-relojes",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21834.png",
+                                                    "order": 11,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c152",
+                                                    "external_id": 21835,
+                                                    "name": "Juegos y Juguetes",
+                                                    "seo": "juegos-y-juguetes",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21835.png",
+                                                    "order": 12,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1aa",
+                                                    "external_id": 21836,
+                                                    "name": "Libros, Revistas y Comics",
+                                                    "seo": "libros-revistas-y-comics",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/libros-revistas.png",
+                                                    "order": 13,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1e0",
+                                                    "external_id": 21837,
+                                                    "name": "Películas, Series de TV y Música",
+                                                    "seo": "peliculas-series-de-tv-y-musica",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/peliculas-series-musica.png",
+                                                    "order": 14,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1f4",
+                                                    "external_id": 21838,
+                                                    "name": "Otras categorías",
+                                                    "seo": "otras-categorias",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/otras-categorias.png",
+                                                    "order": 15,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c20d",
+                                                    "external_id": 21951,
+                                                    "name": "Bebidas",
+                                                    "seo": "bebidas",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/bebidas.png",
+                                                    "order": 16,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c222",
+                                                    "external_id": 21988,
+                                                    "name": "Súpermercado",
+                                                    "seo": "supermercado",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/supermercado.png",
+                                                    "order": 17,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c288",
+                                                    "external_id": 22097,
+                                                    "name": "Farmacia",
+                                                    "seo": "farmacia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/SaludBellezaYcuidadoPersonal_Farmacia.png",
+                                                    "order": 18,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "visible": 0
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful"
+                    }
+                },
+                "operationId": "getParentsList",
+                "summary": "Get All Root Categories"
+            }
+        },
+        "/category/tree": {
+            "summary": "Get Categories Tree",
+            "get": {
+                "tags": [
+                    "CategoryTree"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Ok": {
+                                        "value": {
+                                            "metadata": {
+                                                "is_error": false,
+                                                "http_status": 200,
+                                                "time": 1614709187,
+                                                "message": "Success"
+                                            },
+                                            "data": [
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf2a",
+                                                    "external_id": 21825,
+                                                    "name": "Celulares y telefonía",
+                                                    "seo": "celulares-y-telefonia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21825.png",
+                                                    "order": 1,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf36",
+                                                    "external_id": 21826,
+                                                    "name": "Electrónica y Tecnología",
+                                                    "seo": "electronica-y-tecnologia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21826.png",
+                                                    "order": 2,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf5c",
+                                                    "external_id": 21827,
+                                                    "name": "Videojuegos",
+                                                    "seo": "videojuegos",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21827.png",
+                                                    "order": 3,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bf6f",
+                                                    "external_id": 21828,
+                                                    "name": "Hogar y Jardín",
+                                                    "seo": "hogar-y-jardin",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21828.png",
+                                                    "order": 4,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bfa2",
+                                                    "external_id": 21829,
+                                                    "name": "Deportes y Ocio",
+                                                    "seo": "deportes-y-ocio",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21829.png",
+                                                    "order": 5,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52bff8",
+                                                    "external_id": 21844,
+                                                    "name": "Animales y Mascotas",
+                                                    "seo": "animales-y-mascotas",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/animales-mascotas.png",
+                                                    "order": 6,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c056",
+                                                    "external_id": 21830,
+                                                    "name": "Ferretería y Autos",
+                                                    "seo": "ferreteria-y-autos",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/FerreteriaYautos_Herramientas.png",
+                                                    "order": 7,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c0df",
+                                                    "external_id": 21831,
+                                                    "name": "Ropa, Calzado y Accesorios",
+                                                    "seo": "ropa-calzado-y-accesorios",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21831.png",
+                                                    "order": 8,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c0f7",
+                                                    "external_id": 21832,
+                                                    "name": "Mamá y Bebé",
+                                                    "seo": "mama-y-bebe",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21832.png",
+                                                    "order": 9,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c11a",
+                                                    "external_id": 21833,
+                                                    "name": "Salud, Belleza y Cuidado personal",
+                                                    "seo": "salud-belleza-y-cuidado-personal",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21833.png",
+                                                    "order": 10,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c12c",
+                                                    "external_id": 21834,
+                                                    "name": "Joyería y Relojes",
+                                                    "seo": "joyeria-y-relojes",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21834.png",
+                                                    "order": 11,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c152",
+                                                    "external_id": 21835,
+                                                    "name": "Juegos y Juguetes",
+                                                    "seo": "juegos-y-juguetes",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21835.png",
+                                                    "order": 12,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1aa",
+                                                    "external_id": 21836,
+                                                    "name": "Libros, Revistas y Comics",
+                                                    "seo": "libros-revistas-y-comics",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/libros-revistas.png",
+                                                    "order": 13,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1e0",
+                                                    "external_id": 21837,
+                                                    "name": "Películas, Series de TV y Música",
+                                                    "seo": "peliculas-series-de-tv-y-musica",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/peliculas-series-musica.png",
+                                                    "order": 14,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c1f4",
+                                                    "external_id": 21838,
+                                                    "name": "Otras categorías",
+                                                    "seo": "otras-categorias",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/otras-categorias.png",
+                                                    "order": 15,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c20d",
+                                                    "external_id": 21951,
+                                                    "name": "Bebidas",
+                                                    "seo": "bebidas",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/bebidas.png",
+                                                    "order": 16,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c222",
+                                                    "external_id": 21988,
+                                                    "name": "Súpermercado",
+                                                    "seo": "supermercado",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/supermercado.png",
+                                                    "order": 17,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                },
+                                                {
+                                                    "id": "5ff8e36cc86a7d679b52c288",
+                                                    "external_id": 22097,
+                                                    "name": "Farmacia",
+                                                    "seo": "farmacia",
+                                                    "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/SaludBellezaYcuidadoPersonal_Farmacia.png",
+                                                    "order": 18,
+                                                    "level": 0,
+                                                    "status": 1,
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful"
+                    }
+                },
+                "summary": "Get All Root Categories Tree"
+            }
+        },
+        "/category/{categoryId}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "parameters": [
+                    {
+                        "examples": {
+                            "id": {
+                                "value": "5ff8e36cc86a7d679b52bf2a"
+                            },
+                            "external_id": {
+                                "value": "21825"
+                            }
+                        },
+                        "name": "categoryId",
+                        "description": "Category Id (MongoDB ObjectID or External ID)",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "OK": {
+                                        "value": {
+                                            "metadata": {
+                                                "is_error": false,
+                                                "http_status": 200,
+                                                "time": 1614709727,
+                                                "message": "Success"
+                                            },
+                                            "data": {
+                                                "id": "5ff8e36cc86a7d679b52bf2a",
+                                                "external_id": 21825,
+                                                "name": "Celulares y telefonía",
+                                                "seo": "celulares-y-telefonia",
+                                                "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21825.png",
+                                                "order": 1,
+                                                "level": 0,
+                                                "status": 1,
+                                                "visible": 0
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful"
+                    }
+                },
+                "summary": "Get Category Details"
+            },
+            "parameters": [
+                {
+                    "name": "categoryId",
+                    "description": "Category Id (MongoDB ObjectID or External ID)",
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/category/{categoryId}/tree": {
+            "get": {
+                "tags": [
+                    "CategoryTree"
+                ],
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "OK": {
+                                        "value": {
+                                            "metadata": {
+                                                "is_error": false,
+                                                "http_status": 200,
+                                                "time": 1614709818,
+                                                "message": "Success"
+                                            },
+                                            "data": {
+                                                "id": "5ff8e36cc86a7d679b52bf2a",
+                                                "external_id": 21825,
+                                                "name": "Celulares y telefonía",
+                                                "seo": "celulares-y-telefonia",
+                                                "icon": "https://resources.claroshop.com/medios-plazavip/category/icon/id_21825.png",
+                                                "order": 1,
+                                                "level": 0,
+                                                "status": 1,
+                                                "children": [],
+                                                "ancestors_tree": []
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Categories": {
+                "description": "",
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "name",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
